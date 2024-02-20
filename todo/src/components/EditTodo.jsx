@@ -1,17 +1,13 @@
 import { useState } from "react"
 
-export function TodoForm({addTodo}){
+export function EditTodo({editTodo, title}){
     const [newitem, setNewItem]= useState("")
     
     function handleSubmit(e) {
         e.preventDefault();
-
-        addTodo(newitem)
-
-        setNewItem("");
-
+        editTodo(newitem, title)
     }
-
+  
     return(
         <form onSubmit={handleSubmit}>
         <div className="form-row">
@@ -20,10 +16,9 @@ export function TodoForm({addTodo}){
             value={newitem}
             onChange={(e) => setNewItem(e.target.value)}
             type="text"
-            id="item"
           />
         </div>
-        <button>Add</button>
+        <button>Update</button>
       </form>
     );
 }
